@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 22:19:07 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/13 23:14:22 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/13 23:53:45 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(int argc, char **argv)
+int cd(int argc, char **argv)
 {
     char *cwd;
     
