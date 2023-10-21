@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 21:41:40 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/13 21:45:35 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/16 18:04:28 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ int is_bultings(char **argv)
     else if(argv[1] == "exit")
         return (1);
     else
-        return (0)
+        return (0);
 }
 
-int bulting(int argc, char **argv)
-{
-    
-}
