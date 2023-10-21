@@ -6,11 +6,21 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 00:13:39 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/21 10:55:23 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/21 11:07:09 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int ft_strlen(char *str)
+{
+    int i;
+
+    i = 0;
+    while(str[i])
+        i++;
+    return(i);
+}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
