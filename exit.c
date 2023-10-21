@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 00:13:39 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/21 10:51:48 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/21 10:55:23 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,3 +104,4 @@ void ft_exit(t_list *cmd)
     if(!i)
         exit(t_data.exit);
 }
+
