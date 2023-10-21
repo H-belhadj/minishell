@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 00:20:33 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/16 17:50:37 by hbelhadj         ###   ########.fr       */
+/*   Created: 2023/10/21 11:53:17 by hbelhadj          #+#    #+#             */
+/*   Updated: 2023/10/21 11:55:39 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "minishell.h"
 
-void env()
+void ft_echo(t_cmd *cmd)
 {
-    printf("Hello from the env function!\n");
+    int i;
+
+    i = 0;
+    while(cmd->cmd_args[++i])
+    {
+        ft_putstr_fd(cmd->cmd_args[i], 1);
+        write(1, " ", 1);
+    }
+    write(1, "\n", 1);
 }
