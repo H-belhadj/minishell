@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:00:44 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/23 16:19:53 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:36:44 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void execute_siple(t_data_cmd *cmd, char **env)
     path = get_path(cmd->cmds[0].cmd_args[0], cmd);
 
     pid = fork();
-    if(path == 0)
-    {
-        printf("Command Not Found\n");
-        // exit(127);
-    }
     if(pid == 0)
     {
+        if(path == 0)
+        {
+            printf("Command Not Found\n");
+            exit(127);
+        }
         if(execve(path, cmd->cmds->cmd_args, env) == -1)
         {
             perror("execve\n");
@@ -67,3 +67,4 @@ int execut_builting(t_data_cmd *vars)
             return (0);
         return (1);
 }
+
