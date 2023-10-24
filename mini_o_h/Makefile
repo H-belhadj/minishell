@@ -6,7 +6,7 @@
 #    By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 18:24:14 by omakran           #+#    #+#              #
-#    Updated: 2023/10/23 19:06:29 by hbelhadj         ###   ########.fr        #
+#    Updated: 2023/10/24 19:11:51 by hbelhadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,12 @@ LIBFT=libft_/libft.a
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(READLINE) $(LIBFT)
+	@mkdir obj
+	mv *.o obj/
 
 clean:
 	$(RM) $(OBJS)
+	@rm -rf obj/ 
 
 fclean: clean
 	$(RM) $(NAME)

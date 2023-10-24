@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:52:40 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/24 19:01:14 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:08:51 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void    export(Node* envp, char *str)
     {
         if(strcmp(envp->key, arr[0]) == 0)
         {
-            printf("====>haitamshell's========%s\n", arr[0]);
             free(envp->value);
             envp->value = ft_strdup(arr[1]);        
             break; 
