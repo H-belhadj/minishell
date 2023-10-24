@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 22:02:19 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/23 21:37:23 by hbelhadj         ###   ########.fr       */
+/*   Created: 2023/10/22 20:52:40 by hbelhadj          #+#    #+#             */
+/*   Updated: 2023/10/24 19:01:14 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 void    export(Node* envp, char *str)
 {
@@ -29,6 +31,7 @@ void    export(Node* envp, char *str)
     {
         if(strcmp(envp->key, arr[0]) == 0)
         {
+            printf("====>haitamshell's========%s\n", arr[0]);
             free(envp->value);
             envp->value = ft_strdup(arr[1]);        
             break; 

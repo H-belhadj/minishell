@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 14:00:44 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/23 21:36:44 by hbelhadj         ###   ########.fr       */
+/*   Created: 2023/10/21 11:32:20 by hbelhadj          #+#    #+#             */
+/*   Updated: 2023/10/23 21:34:34 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 void execute_siple(t_data_cmd *cmd, char **env)
 {
@@ -68,3 +70,26 @@ int execut_builting(t_data_cmd *vars)
         return (1);
 }
 
+/*
+
+    path ==> /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+    
+    ls ===>
+    1 / search for path 
+    {
+        split path ":"
+        /usr/local/bin/ls
+        /usr/bin/ls
+        /bin/ls
+        /usr/sbin/ls
+        /sbin/ls
+        /usr/local/munki/ls
+        NULL;
+    }
+    fork()
+    {
+       if path == command not found
+       else
+            exeve("/bin/ls", args, env);
+    }
+*/

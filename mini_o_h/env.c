@@ -5,20 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 17:03:22 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/22 20:41:43 by hbelhadj         ###   ########.fr       */
+/*   Created: 2023/10/21 20:14:39 by hbelhadj          #+#    #+#             */
+/*   Updated: 2023/10/23 20:31:46 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Function to add a new node to the back of a linked list
-void lstadd_back(Node** head, char  *key, char *val) {
+Node *lst_new(char *key, char *value)
+{
     Node* new_node = (Node*)malloc(sizeof(Node));
     new_node->key = key;
-    new_node->value = val;
+    new_node->value = value;
     new_node->next = NULL;
+    return (new_node);
+}
 
+// Function to add a new node to the back of a linked list
+void lstadd_back(Node** head,Node *new_node)
+{
     if (*head == NULL) {
         *head = new_node;
         return;
@@ -46,10 +51,14 @@ Node *ft_env(char **env)
     char    **arr;
 
     i = 0;
+    if (!env)
+    {
+        exit(127);
+    }
     while(env[i])
     {
         arr = ft_split(env[i], '=');
-        lstadd_back(&head, ft_strdup(arr[0]), ft_strdup(arr[1]));
+        lstadd_back(&head, lst_new(ft_strdup(arr[0]), ft_strdup(arr[1])));
         _free(arr);
         i++;
     }

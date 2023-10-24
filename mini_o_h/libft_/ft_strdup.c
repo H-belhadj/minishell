@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omakran <omakran@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 17:13:56 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/22 18:44:40 by hbelhadj         ###   ########.fr       */
+/*   Created: 2022/10/14 16:25:32 by omakran           #+#    #+#             */
+/*   Updated: 2022/10/14 17:18:08 by omakran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    cd(t_cmd *cmd)
+#include "libft.h"
+
+char	*ft_strdup(const char *s1)
 {
-    if(cmd->cmd_args[1])
-       chdir(cmd->cmd_args[1]);
-    else if(!cmd->cmd_args[1])
-       chdir(getenv("HOME"));
+	size_t	i;
+	char	*arr;
+
+	i = 0;
+	arr = malloc(ft_strlen(s1) + 1);
+	if (!arr)
+		return (0);
+	while (s1[i])
+	{
+		arr[i] = s1[i];
+		i++;
+	}
+	arr[i] = '\0';
+	return (arr);
 }

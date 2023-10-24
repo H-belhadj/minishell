@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 19:59:10 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/22 19:59:15 by hbelhadj         ###   ########.fr       */
+/*   Created: 2023/10/22 19:37:48 by hbelhadj          #+#    #+#             */
+/*   Updated: 2023/10/22 19:56:08 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "minishell.h"
 
 char *ft_getenv(char *str, t_data_cmd *vars)
 {
