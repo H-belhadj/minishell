@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:52:40 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/24 19:08:51 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:54:06 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void    export(Node* envp, char *str)
 {
     char **arr;
-
+    
     arr = ft_split(str, '=');
     if(!arr || !arr[0])
     {

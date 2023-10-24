@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:53:17 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/24 19:29:16 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:39:42 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void ft_echo(t_cmd *cmd) {
 
     // Loop through the command arguments
     while (cmd->cmd_args[i]) {
-        if (strcmp(cmd->cmd_args[i], "-n") == 0) {
+        if (ft_strncmp(cmd->cmd_args[i], "-n", 2) == 0) {
             flag = 0;
         } else {
             break; // Exit the loop if an argument is not the -n option
