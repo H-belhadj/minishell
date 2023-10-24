@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:24:21 by omakran           #+#    #+#             */
-/*   Updated: 2023/10/23 20:37:15 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/24 22:10:56 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char *ft_getenv(char *str, t_data_cmd *vars);
 Node *lst_new(char *key, char *value);
 void    _free(char **array);
 void    ft_unset(Node* envp, char *str);
-void    export(Node* envp, char *str);
+void    export(Node* envp, char **str);
 char *get_path(char *cmd, t_data_cmd *vars);
 void execut_all(t_data_cmd *vars, char **env);
 void execute_cmd(t_data_cmd *cmd);

@@ -6,7 +6,7 @@
 #    By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 18:24:14 by omakran           #+#    #+#              #
-#    Updated: 2023/10/24 19:11:51 by hbelhadj         ###   ########.fr        #
+#    Updated: 2023/10/24 22:03:48 by hbelhadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SOURCE = minishell.c tokens.c sort_cmds.c  cmp.c errors.c expand.c remove_quotes
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra 
 
 READLINE = -lreadline
 

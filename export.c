@@ -6,38 +6,72 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:52:40 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/24 19:54:06 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/24 22:47:29 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void    export(Node* envp, char *str)
+void    print_arr(char **arr)
+{
+    if (!arr)
+        return ;
+    for (int i = 0; arr[i]; i++)
+    {
+        printf("arr[%d]: %s\n", i, arr[i]);
+    }
+}
+
+char *get_key(Node *envp, char *key)
+{
+    while(envp)
+    {
+        if(strcmp(envp->key, key) == 0)
+          return (key);          
+         envp = envp->next;
+    }
+    return (NULL);
+}
+
+void    export(Node* envp, char **str)
 {
     char **arr;
     
-    arr = ft_split(str, '=');
-    if(!arr || !arr[0])
+    if(!str[1])
     {
         get_env_export(envp);
         return;
     }
-    else if(!arr[1])
+    int i = 0;
+    while(str[++i])
     {
-        lstadd_back(&envp, lst_new(arr[0], ""));
-        return;
-    }
-    while(envp)
-    {
-        if(strcmp(envp->key, arr[0]) == 0)
-        {
-            free(envp->value);
-            envp->value = ft_strdup(arr[1]);        
-            break; 
+        arr = ft_split(str[i], '=');
+        char *key = get_key(envp, arr[0]);
+        if (key)
+        {     
+            while(envp)
+            {
+                if(strcmp(envp->key, key) == 0)
+                {
+                    free(envp->value);
+                    if (arr[1])
+                        envp->value = ft_strdup(arr[1]);
+                    else
+                        envp->value = arr[1];           
+                }
+                envp = envp->next;
+            }
         }
-        else if (envp->next == NULL)
-            envp->next = lst_new(ft_strdup(arr[0]),ft_strdup(arr[1]));
-        envp = envp->next;
+        else
+        {
+            envp->key = ft_strdup(arr[0]);
+            if (arr[1])
+                envp->value = ft_strdup(arr[1]);
+            else
+                envp->value = arr[1]; 
+            lstadd_back(&envp, lst_new(envp->key, envp->value));
+        }
+        _free(arr);
     }
-    _free(arr);
+    
 }

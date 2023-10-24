@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:32:20 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/23 21:34:34 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/24 22:11:22 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int execut_builting(t_data_cmd *vars)
         else if (str_cmp(vars->cmds[0].cmd_args[0], "cd"))
             cd(&vars->cmds[0], vars);
         else if(str_cmp(vars->cmds[0].cmd_args[0], "export"))
-            export(vars->envp, vars->cmds[0].cmd_args[1]);
+            export(vars->envp, vars->cmds[0].cmd_args);
         else if(str_cmp(vars->cmds[0].cmd_args[0], "unset"))
             ft_unset(vars->envp, vars->cmds[0].cmd_args[1]);
         else
