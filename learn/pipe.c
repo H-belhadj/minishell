@@ -48,14 +48,16 @@ int main(int argc, char **argv) {
     if (id == 0)
     {
         close(fd[0]);  // Close the read end of the pipe.
-        write(fd[1], &sum, sizeof(sum));
+        if(write(fd[1], &sum, sizeof(sum)) == -1)
+            return 3;
         close(fd[1]);  // Close the write end of the pipe.
     }
     else
     {
         int sumfromchild;
         close(fd[1]);  // Close the write end of the pipe.
-        read(fd[0], &sumfromchild, sizeof(sumfromchild));
+        if(read(fd[0], &sumfromchild, sizeof(sumfromchild)) == -1)
+            return 4;
         close(fd[0]);  // Close the read end of the pipe.
 
         int totalsum = sum + sumfromchild;
