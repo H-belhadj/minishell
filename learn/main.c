@@ -6,12 +6,24 @@
 int main(int argc, char **argv)
 {
     int id = fork();
+    int n;
+    if(id == 0)
+        n = 1;
+    else 
+        n = 6;
     if(id != 0)
-        fork();
-    printf("Hello World\n");
-    // if(id == 0)
-    //     printf("Hello From The Child Process\n");
-    // else
-    //     printf("Hello From The Main Process\n"); 
+    {
+        int status;
+        wait(&status);
+    }
+    int i = n;
+    while(i < n + 5)
+    {
+        printf("%d ", i);
+        fflush(stdout);
+        i++;
+    }
+    if(id != 0)
+        printf("\n");
     return (0);
 }
