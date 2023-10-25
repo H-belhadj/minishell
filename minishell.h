@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:24:21 by omakran           #+#    #+#             */
-/*   Updated: 2023/10/24 22:10:56 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:11:09 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void execute_cmd(t_data_cmd *cmd);
 Node *lst_new(char *key, char *value);
 void get_env_export(Node *envp);
 void lstadd_back(Node** head,Node *new_node);
+void execute_compund(t_data_cmd *cmd);
 /*##############################################################################################*/
 
 #endif

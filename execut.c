@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:32:20 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/24 22:11:22 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:11:29 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void execut_all(t_data_cmd *vars, char **env)
 {
     if(vars->cmd_size == 1)
         execute_siple(vars, env);
-            // else
-    //     execute_compund();
+    else
+        execute_compund(vars);
 }
 
 

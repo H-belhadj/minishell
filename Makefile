@@ -6,13 +6,13 @@
 #    By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 18:24:14 by omakran           #+#    #+#              #
-#    Updated: 2023/10/24 22:03:48 by hbelhadj         ###   ########.fr        #
+#    Updated: 2023/10/25 13:26:30 by hbelhadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-SOURCE = minishell.c tokens.c sort_cmds.c  cmp.c errors.c expand.c remove_quotes.c execut.c exit.c ft_echo.c pwd.c env.c cd.c env_export.c ft_getenv.c export.c unset.c path.c 
+SOURCE = minishell.c tokens.c sort_cmds.c  cmp.c errors.c expand.c remove_quotes.c execut.c exit.c ft_echo.c pwd.c env.c cd.c env_export.c ft_getenv.c export.c unset.c path.c pipes.c
 
 CC = cc
 
