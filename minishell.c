@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:24:18 by omakran           #+#    #+#             */
-/*   Updated: 2023/10/23 18:54:22 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:14:09 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main(int __unused argc, char __unused **argv, char	**envp)
 		remove_quotes(_tokens);
 	// 	//handl errors
 		vars->cmds = sort_cmds(_tokens, vars);
+		// printf("%s", vars->cmds->operators);
 		execut_all(vars, envp);
 		// print_table_cmds(vars);
 	}

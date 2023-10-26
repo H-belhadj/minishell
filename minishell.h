@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:24:21 by omakran           #+#    #+#             */
-/*   Updated: 2023/10/25 15:39:06 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:50:09 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <limits.h>
+# include <errno.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 #include "libft_/libft.h"
