@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:18:03 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/26 13:16:14 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:41:24 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,42 +35,30 @@ void execute_compund(t_data_cmd *cmd)
                 dup2(save, 0);
                 dup2(fd[1], 1);
             }
-            dprintf(2, "save fd %d\n", save);
+            // dprintf(2, "save fd %d\n", save);
             close(save);
             close(fd[0]);
             close(fd[1]);
             path = get_path(cmd->cmds[i].cmd_args[0], cmd);
             if (path) {
                 if (execve(path, cmd->cmds[i].cmd_args, NULL) == -1) {
-                    dprintf(2, "%s\n", strerror(errno));
+                    // dprintf(2, "%s\n", strerror(errno));
                 }
             }
         }
         if (pid > 0)
         {
+            save = -1;
             if (save > 2)
             {
                 close(save);
-                save = -1;
             }
             else 
                 save = dup(fd[0]);
             close(fd[0]);
             close(fd[1]);
             waitpid(pid, NULL, 0);
-            printf("Command int i = %d | size = %d\n", i, cmd->cmd_size);
+            // printf("Command int i = %d | size = %d\n", i, cmd->cmd_size);
         }
     }
-
-    
-    // else
-    // {
-    //     wait(NULL);
-    //     dup2(fd[0], 0);
-    //     execve("/bin/cat" , ft_split("/bin/cat", ' '), NULL);
-    //     close(fd[1]);
-    //     close(fd[0]);
-    //     close(0);
-    //     dup2(stdin_fd, 0);
-    // }
 }
