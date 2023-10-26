@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:32:20 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/25 15:11:29 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:01:06 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,27 +69,3 @@ int execut_builting(t_data_cmd *vars)
             return (0);
         return (1);
 }
-
-/*
-
-    path ==> /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
-    
-    ls ===>
-    1 / search for path 
-    {
-        split path ":"
-        /usr/local/bin/ls
-        /usr/bin/ls
-        /bin/ls
-        /usr/sbin/ls
-        /sbin/ls
-        /usr/local/munki/ls
-        NULL;
-    }
-    fork()
-    {
-       if path == command not found
-       else
-            exeve("/bin/ls", args, env);
-    }
-*/

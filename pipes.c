@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:18:03 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/26 13:41:24 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:37:52 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void execute_compund(t_data_cmd *cmd)
 {
     int pid;
     int save = -1;
-    for (int i = 0; i < cmd->cmd_size; i++) {
+    int i = -1;
+    while (++i < cmd->cmd_size) 
+    {
         int fd[2];
         char    *path;
         if(pipe(fd) == -1)
@@ -35,14 +37,12 @@ void execute_compund(t_data_cmd *cmd)
                 dup2(save, 0);
                 dup2(fd[1], 1);
             }
-            // dprintf(2, "save fd %d\n", save);
             close(save);
             close(fd[0]);
             close(fd[1]);
             path = get_path(cmd->cmds[i].cmd_args[0], cmd);
             if (path) {
                 if (execve(path, cmd->cmds[i].cmd_args, NULL) == -1) {
-                    // dprintf(2, "%s\n", strerror(errno));
                 }
             }
         }
@@ -58,7 +58,6 @@ void execute_compund(t_data_cmd *cmd)
             close(fd[0]);
             close(fd[1]);
             waitpid(pid, NULL, 0);
-            // printf("Command int i = %d | size = %d\n", i, cmd->cmd_size);
         }
     }
 }
