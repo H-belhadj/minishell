@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:32:20 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/27 13:38:19 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:24:02 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,29 @@ int get_redir_type(t_cmd *cmd) {
     return -1;
 }
 
-int read_heredoc(char *sep) {
-    char    *tmp;
-    char    *buf;
-    int     fd, fds[2];
+// int read_heredoc(char *sep) {
+//     char    *tmp;
+//     char    *buf;
+//     int     fd, fds[2];
 
-    pipe(fds);
-    dprintf(2, "SEP: %s\n", sep);
-    while (1) {
-        tmp = readline("ktb a wldi >");
-        if (!tmp || !ft_strncmp(tmp, sep, ft_strlen(tmp)))
-            break ;
-        tmp = ft_strjoin(tmp, "\n");
-        buf = ft_strjoin(buf, tmp);
-        if (!buf)
-            break ;
-    }
-    ft_putstr_fd(buf, fds[1]);
-    fd = dup(fds[0]);
-    close(fds[1]);
-    close(fds[0]);
-    return fds[0];
-}
+//     pipe(fds);
+//     dprintf(2, "SEP: %s\n", sep);
+//     while (1)
+//     {
+//         tmp = readline("ktb a wldi >");
+//         if (!tmp || !ft_strncmp(tmp, sep, ft_strlen(tmp)))
+//             break ;
+//         tmp = ft_strjoin(tmp, "\n");
+//         buf = ft_strjoin(buf, tmp);
+//         if (!buf)
+//             break ;
+//     }
+//     ft_putstr_fd(buf, fds[1]);
+//     fd = dup(fds[0]);
+//     close(fds[1]);
+//     close(fds[0]);
+//     return fds[0];
+// }
 
 int open_redir(t_cmd *cmd) {
     int fd;
@@ -86,11 +87,11 @@ int open_redir(t_cmd *cmd) {
         }
         cmd->fd_out = fd;
     }
-    else if (redir_type == HEREDOC) {
-        fd = read_heredoc(cmd->files[0]);
-        cmd->fd_in = fd;
+    // else if (redir_type == HEREDOC) {
+    //     fd = read_heredoc(cmd->files[0]);
+    //     cmd->fd_in = fd;
         
-    }
+    // }
     return fd;
 }
 
