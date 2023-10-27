@@ -6,7 +6,7 @@
 #    By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 18:24:14 by omakran           #+#    #+#              #
-#    Updated: 2023/10/25 13:26:30 by hbelhadj         ###   ########.fr        #
+#    Updated: 2023/10/27 22:26:19 by hbelhadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SOURCE = minishell.c tokens.c sort_cmds.c  cmp.c errors.c expand.c remove_quotes
 
 CC = cc
 
-CFLAGS = -Wall -Wextra 
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 READLINE = -lreadline
 
@@ -29,19 +29,19 @@ all: $(NAME)
 LIBFT=libft_/libft.a
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(READLINE) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(READLINE) $(LIBFT)
 	@mkdir obj
-	mv *.o obj/
+	@mv *.o obj/
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 	@rm -rf obj/ 
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
