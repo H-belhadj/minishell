@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:18:03 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/26 16:37:52 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/27 09:43:27 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,18 @@ void execute_compund(t_data_cmd *cmd)
         char    *path;
         if(pipe(fd) == -1)
         {
-            printf("Eroor a saatt\n");
+            printf("Error \n");
             exit(127);
         }
         pid = fork();
         if (pid == 0)
         {
-            if (i == 0) {
+            if (i == 0)
                 dup2(fd[1], 1);
-            } else if (i == cmd->cmd_size - 1) {
+            else if (i == cmd->cmd_size - 1)
                 dup2(save, 0);
-            } else if (i < cmd->cmd_size - 1 && i > 0) {
+            else if (i < cmd->cmd_size - 1 && i > 0)
+            {
                 dup2(save, 0);
                 dup2(fd[1], 1);
             }
@@ -41,8 +42,12 @@ void execute_compund(t_data_cmd *cmd)
             close(fd[0]);
             close(fd[1]);
             path = get_path(cmd->cmds[i].cmd_args[0], cmd);
-            if (path) {
-                if (execve(path, cmd->cmds[i].cmd_args, NULL) == -1) {
+            if (path)
+            {
+                if (execve(path, cmd->cmds[i].cmd_args, NULL) == -1)
+                {
+                    printf("error\n");    
+                    return ;
                 }
             }
         }
@@ -50,9 +55,7 @@ void execute_compund(t_data_cmd *cmd)
         {
             save = -1;
             if (save > 2)
-            {
                 close(save);
-            }
             else 
                 save = dup(fd[0]);
             close(fd[0]);
