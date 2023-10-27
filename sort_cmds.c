@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 11:47:38 by omakran           #+#    #+#             */
-/*   Updated: 2023/10/26 12:05:36 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:39:40 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,8 @@ t_cmd *sort_cmds(char **tokens, t_data_cmd  *vars)
 			cmds[k].next_is_pipe = 1;
 		else 
 			cmds[k].next_is_pipe = 0;
+		cmds[k].fd_in = -1;
+		cmds[k].fd_out = -1;
 		cmds[k].cmd_args = malloc(sizeof(char *) * (i + 1));
 		cmds[k].cmd_args = fill_commads(cmds[k].cmd_args, tokens, tmp, counter);
 		cmds[k].operators = malloc(sizeof(char *) * (count_opertors_and_file(tokens, tmp, counter) + 1));

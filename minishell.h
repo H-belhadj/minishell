@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:24:21 by omakran           #+#    #+#             */
-/*   Updated: 2023/10/26 17:01:55 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:37:03 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <limits.h>
 # include <errno.h>
+# include <fcntl.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 #include "libft_/libft.h"
@@ -28,13 +29,21 @@ struct s_help
 	int exit_status;
 }s_help;
 
+enum e_redir_types {
+	INSERT, // >
+	APPEND, // >>
+	HEREDOC, // <<
+	INSERT_FROM,
+};
+
 typedef struct s_cmd
 {
 	char	**cmd_args;
 	char	**operators;
 	char	**files;
 	int		next_is_pipe;
-	int out;
+	int fd_in;
+	int fd_out;
 } t_cmd;
 
 typedef struct Node {

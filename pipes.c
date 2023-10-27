@@ -6,11 +6,12 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:18:03 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/27 09:43:27 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:48:07 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 
 void execute_compund(t_data_cmd *cmd)
 {
@@ -28,20 +29,22 @@ void execute_compund(t_data_cmd *cmd)
         }
         pid = fork();
         if (pid == 0)
-        {
+        { 
             if (i == 0)
-                dup2(fd[1], 1);
+                dup2(fd[1], STDOUT_FILENO);
             else if (i == cmd->cmd_size - 1)
                 dup2(save, 0);
             else if (i < cmd->cmd_size - 1 && i > 0)
             {
-                dup2(save, 0);
-                dup2(fd[1], 1);
+                dup2(save, STDIN_FILENO);
+                dup2(fd[1], STDOUT_FILENO);
             }
             close(save);
             close(fd[0]);
             close(fd[1]);
             path = get_path(cmd->cmds[i].cmd_args[0], cmd);
+            //set up redirction
+            // get_red(&cmd->cmds[i]);
             if (path)
             {
                 if (execve(path, cmd->cmds[i].cmd_args, NULL) == -1)
@@ -51,6 +54,7 @@ void execute_compund(t_data_cmd *cmd)
                 }
             }
         }
+        
         if (pid > 0)
         {
             save = -1;
