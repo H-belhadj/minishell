@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:32:20 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/27 22:27:27 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:18:15 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int read_heredoc(char *sep)
     char    *tmp;
     int     fds[2];
 
-    printf("herdoc\n");
+    // printf("herdoc\n");
     pipe(fds);
     while (1)
     {
@@ -53,6 +53,7 @@ int read_heredoc(char *sep)
         ft_putendl_fd(tmp, fds[1]);
         free(tmp);
     }
+    // ft_putstr_fd(tmp, fds[0]);
     close(fds[1]);
     return (fds[0]);
 }
