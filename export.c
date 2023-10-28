@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:52:40 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/24 22:47:29 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:22:42 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void    print_arr(char **arr)
 {
+    int i;
+
+    i = -1;
     if (!arr)
         return ;
-    for (int i = 0; arr[i]; i++)
-    {
+    while (arr[++i])
         printf("arr[%d]: %s\n", i, arr[i]);
-    }
 }
 
 char *get_key(Node *envp, char *key)
@@ -28,7 +29,7 @@ char *get_key(Node *envp, char *key)
     {
         if(strcmp(envp->key, key) == 0)
           return (key);          
-         envp = envp->next;
+        envp = envp->next;
     }
     return (NULL);
 }

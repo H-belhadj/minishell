@@ -6,15 +6,19 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:32:20 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/28 16:18:15 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:18:21 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 
-int get_redir_type(t_cmd *cmd) {
-    for (int i = 0; cmd->operators[i]; i++)
+int get_redir_type(t_cmd *cmd)
+{
+    int i;
+
+    i = 0;
+    while (cmd->operators[i])
     {
         if (ft_strlen(cmd->operators[i]) == 2)
         {
@@ -30,6 +34,7 @@ int get_redir_type(t_cmd *cmd) {
             else if (!ft_strncmp(cmd->operators[i], "<", ft_strlen(cmd->operators[i])))
                 return INSERT_FROM;
         }
+        i++;
     }
     return (-1);
 }
@@ -41,7 +46,6 @@ int read_heredoc(char *sep)
     char    *tmp;
     int     fds[2];
 
-    // printf("herdoc\n");
     pipe(fds);
     while (1)
     {
@@ -53,13 +57,13 @@ int read_heredoc(char *sep)
         ft_putendl_fd(tmp, fds[1]);
         free(tmp);
     }
-    // ft_putstr_fd(tmp, fds[0]);
     close(fds[1]);
     return (fds[0]);
 }
 
 int open_redir(t_cmd *cmd)
 {
+    int i;
     int fd;
     int redir_type;
 
@@ -67,31 +71,37 @@ int open_redir(t_cmd *cmd)
     redir_type = get_redir_type(cmd);
     if (redir_type == INSERT)
     {
-        for (int i = 0; cmd->files[i]; i++)
+        i = 0;
+        while (cmd->files[i])
         {
             fd = open(cmd->files[i], O_RDWR | O_CREAT | O_TRUNC, 0644);
             if (cmd->files[i + 1] != NULL)
                 close(fd);
+            i++;
         }
         cmd->fd_out = fd;
     }
     else if (redir_type == INSERT_FROM)
     {
-        for (int i = 0; cmd->files[i]; i++)
+        i = 0;
+        while (cmd->files[i])
         {
             fd = open(cmd->files[i], O_RDONLY, 0644);
             if (cmd->files[i + 1] != NULL)
                 close(fd);
+            i++;
         }
         cmd->fd_in = fd;
     }
     else if (redir_type == APPEND)
     {
-        for (int i = 0; cmd->files[i]; i++)
+        i = 0;
+        while (cmd->files[i])
         {
             fd = open(cmd->files[i], O_RDWR | O_CREAT | O_APPEND, 0644);
             if (cmd->files[i + 1] != NULL)
                 close(fd);
+            i++;
         }
         cmd->fd_out = fd;
     }
