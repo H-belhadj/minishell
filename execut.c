@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 11:32:20 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/28 18:18:21 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/29 19:05:06 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ void execute_siple(t_data_cmd *cmd, char **env)
     pid = fork();
     if(pid == 0)
     {
+        signal(SIGQUIT, SIG_DFL);
+	    signal(SIGINT, SIG_DFL);
         if(path == 0)
         {
             printf("Command Not Found\n");

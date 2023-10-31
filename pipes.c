@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:18:03 by hbelhadj          #+#    #+#             */
-/*   Updated: 2023/10/27 22:16:04 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/29 19:04:54 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void execute_compund(t_data_cmd *cmd)
         pid = fork();
         if (pid == 0)
         { 
+            signal(SIGQUIT, SIG_DFL);
+	        signal(SIGINT, SIG_DFL);
             // open_redir(cmd->cmds);
             if (i == 0)
                 dup2(fd[1], STDOUT_FILENO);

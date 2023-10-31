@@ -6,7 +6,7 @@
 /*   By: hbelhadj <hbelhadj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:24:18 by omakran           #+#    #+#             */
-/*   Updated: 2023/10/26 12:14:09 by hbelhadj         ###   ########.fr       */
+/*   Updated: 2023/10/29 19:50:29 by hbelhadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	main(int __unused argc, char __unused **argv, char	**envp)
 	if (!vars)
 		exit (1);
 	vars->envp = ft_env(envp); //you need to add this
+	// signal(SIGQUIT, SIG_IGN);
+	// signal(SIGINT, &handler);
 	while (1)
 	{
 		line = readline("minishell > ");
